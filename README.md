@@ -12,5 +12,5 @@ Built as part of my frontend journey.
 -Added sticky navigation bar
 -Improved layout structure using Flexbox
 
--Add responsive contact form
-Enhance contact form with HTML validation
+-Added responsive contact form
+Enhanced contact form with HTML validation
