@@ -13,4 +13,4 @@ Built as part of my frontend journey.
 -Improved layout structure using Flexbox
 
 -Added responsive contact form
-Enhanced contact form with HTML validation
+-Enhanced contact form with HTML validation
