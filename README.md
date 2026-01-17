@@ -8,7 +8,8 @@ This project demonstrates:
 -Responsive Design
 
 Built as part of my frontend journey.
-## updates-week 2 day 1
+## updates
+week 2 day 1
 -Added sticky navigation bar
 -Improved layout structure using Flexbox
 
