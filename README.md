@@ -16,3 +16,6 @@ week 2 day 1
 week 2 day2
 -Added responsive contact form
 -Enhanced contact form with HTML validation
+
+day 3:
+-Added hover effects and polished UI
