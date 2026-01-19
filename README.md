@@ -19,3 +19,5 @@ week 2 day2
 
 day 3:
 -Added hover effects and polished UI
+
+week 2 complete: UI polish, theming, and cleanup
