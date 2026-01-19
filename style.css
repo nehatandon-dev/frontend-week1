@@ -1,4 +1,11 @@
-
+/*================
+    CSS VARIABLES
+  ==================*/
+  :root{
+    --primary-color:#2c3e50;
+    --secondary-color:none;
+    --text-color:#06b966;
+  }  
 /*================
     GLOBAL STYLES
 ===================*/
@@ -11,33 +18,19 @@
 body,html{
     height: 100%;
     width: 100%;
-    background-color: rgb(19, 18, 18);
-    color: rgb(173, 173, 173);
+    background-color: rgb(12, 8, 0);
+    color: var(--text-color);
     border: 20px;
     border-color: rgb(207, 196, 196);
     padding: 10px;
     margin: 10px;
 }
-h1{
+h1 {
     color: aqua;
     display: flex;
     text-align: center;
     justify-content: center;
 
-}
-p{
-    text-align: center;
-}
-/*================
-    SKILLS STYLE
-==================*/
-.container{
-    background-color:none;
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content:space-around;
-    align-items: center;
 }
 
 h3{
@@ -50,30 +43,49 @@ h4{
     padding-top: 5px;
    
 }
+p{
+    text-align: center;
+}
+/*================
+    SKILLS STYLE
+==================*/
+.skills-container{
+    background-color:none;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    align-items: center;
+}
 
-.grid-container{
+/*===========
+    PROJECTS
+ =============*/    
+
+.project-grid-container{
     display:grid;
     grid-template-columns: repeat(3,1fr);
     gap:10px;
 
 }
-.card{
-    background: none;
+.project-card{
+    background: #01060a;
     color: rgb(221, 209, 209);
+    transition : transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Mobile view adjustments */
 
 @media(max-width:768px)
 {
-    .grid-container{
+    .project-grid-container{
         grid-template-columns: 1fr;
     }
     
 }
     @media(max-width:768px){
 
-        .container{
+        .skills-container{
              flex-direction: column;           
         }
     }
@@ -81,7 +93,9 @@ h4{
     CONTACT FORM
    =================*/   
 
-form{
+.contact-form{
+     padding: 40px;
+    background: var(--secondary-color);
     max-width: 400px;
     margin: auto;
     display: flex;
@@ -92,11 +106,6 @@ input,textarea{
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
-}
-
-.contact{
-    padding: 40px;
-    background: #aca9a9;
 }
 
 /*==========
@@ -111,24 +120,17 @@ button{
     border-radius: 10px;
     border-style: groove;
     font-size: 20px;
+    transition: background 0.3s ease;
 } 
 /*==============
     HOVER EFFECT 
    ================*/
- .contact-form button{
-
-    transition: background 0.3s ease;
-}
  
 .contact-form button:hover{
     background: #033f77;
 }
 
-.card{
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover{
+.project-card:hover{
     transform: translate(-5px);
     box-shadow: 0 10px 20px rgba(0, 0,0, 0.15);
 }
@@ -144,7 +146,7 @@ button{
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background-color: #2c3e50;
+    background-color: var(--primary-color);
     color: white;
     position: sticky;
     top: 0;
