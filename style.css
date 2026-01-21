@@ -108,6 +108,12 @@ input,textarea{
     border: 1px solid #ccc;
 }
 
+.form-message{
+    margin-top: 15px;
+    color: green;
+    font-weight: bold;
+}
+
 /*==========
     BUTTON
 ===============*/
