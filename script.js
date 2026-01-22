@@ -3,9 +3,23 @@ const form = document.querySelector(".contact-form");
 const messageBox = document.querySelector(".form-message");   
 const nameInput = document.querySelector("#name");
 
-form.addEventListener("submit", function(event){
+function showSuccessMessage(nameInput){ 
+   messageBox.textContent = `Thank you, ${nameInput}! Your message has been sent.`;
+  
+};
+
+function handleFormSubmit(event){
   event.preventDefault();
 
-  messageBox.textContent = `Thank you, ${nameInput.value}! Your message has been sent.`;
+  if(nameInput.value.trim()===""){
+    messageBox.textContent = "Please enter your name";
+    return;
+  }
+
+  showSuccessMessage(nameInput.value);
+
   form.reset();
-});
+}
+
+form.addEventListener("submit",handleFormSubmit);
+
