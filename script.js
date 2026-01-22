@@ -2,21 +2,33 @@
 const form = document.querySelector(".contact-form");
 const messageBox = document.querySelector(".form-message");   
 const nameInput = document.querySelector("#name");
+const emailInput = document.querySelector("#email");
+const messageInput = document.querySelector("#message");
 
-function showSuccessMessage(nameInput){ 
-   messageBox.textContent = `Thank you, ${nameInput}! Your message has been sent.`;
+
+function showMessage(text,color) { 
+   messageBox.textContent = text;
+   messageBox.style.color = color;
   
-};
+} 
 
-function handleFormSubmit(event){
+function handleFormSubmit(event) {
   event.preventDefault();
 
-  if(nameInput.value.trim()===""){
-    messageBox.textContent = "Please enter your name";
+  if
+  (nameInput.value.trim()==="" ||
+   emailInput.value.trim()==="" || 
+   messageInput.value.trim()==="") 
+   {
+
+    showMessage("All fields are required","red");
     return;
   }
 
-  showSuccessMessage(nameInput.value);
+  
+  showMessage(
+    `Thank you, ${nameInput.value}! We received your message.`,"green"
+  );
 
   form.reset();
 }
