@@ -21,3 +21,16 @@ day 3:
 -Added hover effects and polished UI
 
 week 2 complete: UI polish, theming, and cleanup
+
+## Week 3 -JavaScript Fundamentals
+
+In week 3,I implemented JavaScript functionality for the contact form;
+-Connected JS file properly
+-Handled form submit events
+-Prevented default form behaviour
+-Read multiple input values
+-Implemented form validation
+-Displayed dynamic success and error messages
+-Refactored code using functions and objects 
+-Followed clean code and Git commit
+
