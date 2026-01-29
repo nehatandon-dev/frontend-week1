@@ -64,3 +64,45 @@ renderList(skills,"skills-list");
 renderList(tools,"tools-list");
 renderList(basics,"basics-list");
 renderList(softSkills,"softSkills-list");
+
+//Creating Aarray of Objects for Projects
+
+const projects = [
+  {
+    title: "Portfolio Website",
+    description: "Personal portfolio using HTML, CSS, JS",
+    tech: "HTML, CSS, JavaScript"
+  },
+  {
+    title: "Form Validation",
+    description: "Contact form with validation",
+    tech: "JavaScript"
+  }
+
+];
+
+function renderProjects(projects) {
+  const grid = document.getElementById("projectsGrid");
+
+  projects.forEach(project => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    card.innerHTML = `
+    <h3>${project.title}</h3>
+
+    <p>
+      <strong>Description:</strong>
+      ${project.description}
+    </p>
+    <p class = "tech">
+      <strong>Tech:</strong>
+      <small>${project.tech}</small>
+    </p>
+    `;
+
+    grid.appendChild(card);
+  });
+}
+
+renderProjects(projects);

@@ -4,7 +4,7 @@
   :root{
     --primary-color:#2c3e50;
     --secondary-color:none;
-    --text-color:#06b966;
+    --text-color:black;
   }  
 /*================
     GLOBAL STYLES
@@ -18,10 +18,10 @@
 body,html{
     height: 100%;
     width: 100%;
-    background-color: rgb(12, 8, 0);
+    background-color: #a28089;
     color: var(--text-color);
     border: 20px;
-    border-color: rgb(207, 196, 196);
+    border-color: #9df9ef;
     padding: 10px;
     margin: 10px;
 }
@@ -36,26 +36,25 @@ h1 {
 h3{
     margin-top: 30px;
     margin-bottom: 20px;
-    color: #e0cece;
+    color: #d8b207;
 }
 h4{
-    color: rgb(240, 82, 10);
+    color: rgb(240, 205, 10);
     padding-top: 5px;
    
 }
-p{
+h5{
     text-align: center;
+    color:rgb(240, 205, 4)
 }
 /*================
     SKILLS STYLE
 ==================*/
 .skills-container{
     background-color:none;
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content:space-around;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    
 }
 
 /*===========
@@ -68,9 +67,9 @@ p{
     gap:10px;
 
 }
-.project-card{
-    background: #01060a;
-    color: rgb(221, 209, 209);
+#projectsGrid{
+    background: none;
+    color: black;
     transition : transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -86,7 +85,7 @@ p{
     @media(max-width:768px){
 
         .skills-container{
-             flex-direction: column;           
+                grid-template-columns: 1fr;        
         }
     }
   /*=============
@@ -109,7 +108,7 @@ input,textarea{
 }
 
 .form-message{
-    margin-top: 15px;
+    margin-top: 10px;
     color: green;
     font-weight: bold;
 }
@@ -136,7 +135,18 @@ button{
     background: #033f77;
 }
 
-.project-card:hover{
+#projectsGrid:hover{
+    transform: translate(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0,0, 0.15);
+}
+
+.skills-container:hover{
+    transform: translate(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0,0, 0.15);
+    color: black;
+}
+
+.contact-form:hover{
     transform: translate(-5px);
     box-shadow: 0 10px 20px rgba(0, 0,0, 0.15);
 }
