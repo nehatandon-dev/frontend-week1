@@ -116,7 +116,7 @@ function renderProjects(projects) {
 
 renderProjects(projects);
 
-//=======SAVING  IN LOCALSTORAGE======
+//=======SAVE ENTRIES IN LOCALSTORAGE======
 
 form.addEventListener('submit',function (e) {
   e.preventDefault();
@@ -126,31 +126,43 @@ form.addEventListener('submit',function (e) {
     email:inputs.email.value.trim(),
     message:inputs.message.value.trim()
   }; 
-  
-  localStorage.setItem("contactData", JSON.stringify(formData));
-  console.log("saving:" , JSON.stringify(formData));
 
-  savedMsg.textContent = `Saved data: ${formData.name}`;
-  savedMsg.style.color = "green";
+  let storedData = JSON.parse(localStorage.getItem("contactData")) || [];
+
+  if (!Array.isArray(storedData)) {
+    storedData = [];
+  }
+  
+  storedData.push(formData);
+  localStorage.setItem("contactData" , JSON.stringify(storedData));
+  
+  console.log("saving:" , JSON.stringify(formData));
   
   form.reset();
 
+  //===========RENDERING ENTRIES============
 
-// =======LOCAL STORAGE RETRIEVAL=======
+  const entriesContainer = document.getElementById("savedEntries");
 
-  const savedData = localStorage.getItem("contactData");
-  if(savedData) {
-    const data =JSON.parse(savedData);
-    savedMsg.textContent =`Saved data: ${data.name}`;
-    savedMsg.style.color = "green";
-  }else{
-    savedMsg.textcolor = "No saved data";
-    savedMsg.style.color = "gray";
+  function renderEntries() {
+    entriesContainer.innerHTML = "";
+
+    const data = JSON.parse(localStorage.getItem("contactData")) ||[];
+    if (data.length === 0) {
+      entriesContainer.textContent = "No saved entries";
+      return;
+    }
+
+    data.forEach((entry, index) => {
+      const div = document.createElement("div");
+      div.textContent = `${index + 1},${entry.name}`;
+      entriesContainer.appendChild(div);
+
+    });
   }
-   
-  });
- form.reset();
+  renderEntries();
 
+});
  //==========CLEAR DATA BUTTON=======
 
  const clearBtn = document.getElementById("clearDataBtn");
