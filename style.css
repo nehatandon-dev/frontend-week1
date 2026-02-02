@@ -36,16 +36,16 @@ h1 {
 h3{
     margin-top: 30px;
     margin-bottom: 20px;
-    color: #d8b207;
+    color: #f0eee9;
 }
 h4{
-    color: rgb(240, 205, 10);
+    color: rgb(247, 245, 239);
     padding-top: 5px;
    
 }
 h5{
     text-align: center;
-    color:rgb(240, 205, 4)
+    color:rgb(31, 26, 1)
 }
 /*================
     SKILLS STYLE
@@ -116,25 +116,50 @@ input,textarea{
 /*==========
     BUTTON
 ===============*/
+
+#containerBtn{
+    display:inline-block;
+    margin: 0 5px;
+ }
+
 button{
     background-color: #2008f3;
     color: white;
     border: none;
     padding: 12px;
+    height:50px;
+    width:150px;
     cursor: pointer;
     border-radius: 10px;
-    border-style: groove;
     font-size: 20px;
+    font-weight: bold;
     transition: background 0.3s ease;
+    
 } 
+
+#clearDataBtn{
+    background-color: red;
+    color: white;
+    height:50px;
+    width: 150px;
+    border-radius: 10px;
+    border-color: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: backgrond 0.3s ease;
+}
 /*==============
     HOVER EFFECT 
    ================*/
  
 .contact-form button:hover{
-    background: #033f77;
+    background-color: #043563;
 }
 
+#clearDataBtn:hover{
+    background-color: rgb(141, 19, 19);
+}
 #projectsGrid:hover{
     transform: translate(-5px);
     box-shadow: 0 10px 20px rgba(0, 0,0, 0.15);

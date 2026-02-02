@@ -126,7 +126,7 @@ form.addEventListener('submit',function (e) {
     email:inputs.email.value.trim(),
     message:inputs.message.value.trim()
   }; 
-
+  
   localStorage.setItem("contactData", JSON.stringify(formData));
   console.log("saving:" , JSON.stringify(formData));
 
@@ -138,10 +138,29 @@ form.addEventListener('submit',function (e) {
 
 // =======LOCAL STORAGE RETRIEVAL=======
 
-  const savedData = JSON.parse(localStorage.getItem("contactData"));
-  console.log("Retrived:", JSON.stringify(savedData));
- 
+  const savedData = localStorage.getItem("contactData");
+  if(savedData) {
+    const data =JSON.parse(savedData);
+    savedMsg.textContent =`Saved data: ${data.name}`;
+    savedMsg.style.color = "green";
+  }else{
+    savedMsg.textcolor = "No saved data";
+    savedMsg.style.color = "gray";
+  }
+   
   });
  form.reset();
- 
+
+ //==========CLEAR DATA BUTTON=======
+
+ const clearBtn = document.getElementById("clearDataBtn");
+
+ clearBtn.addEventListener("click",() =>{
+  localStorage.removeItem("contactData");
+
+  savedMsg.textContent = "Saved data cleared";
+  savedMsg.style.color = "red";
+
+  form.reset();
+ })
 });
