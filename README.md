@@ -34,3 +34,9 @@ In week 3,I implemented JavaScript functionality for the contact form;
 -Refactored code using functions and objects 
 -Followed clean code and Git commit
 
+## Week 4 - JavaScript & Local Storage
+-Implemented form validation and submission handling
+-Storage and retrieved user data using localStorage
+-Display saved data on page load
+-Added functionality to clear stored data
+-Improved UX with conditional message
