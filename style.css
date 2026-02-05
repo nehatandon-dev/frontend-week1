@@ -4,7 +4,7 @@
   :root{
     --primary-color:#2c3e50;
     --secondary-color:none;
-    --text-color:black;
+    --text-color:rgb(247, 241, 241);
   }  
 /*================
     GLOBAL STYLES
@@ -18,7 +18,7 @@
 body,html{
     height: 100%;
     width: 100%;
-    background-color: #a28089;
+    background-color: #0a0a0a;
     color: var(--text-color);
     border: 20px;
     border-color: #9df9ef;
@@ -36,16 +36,16 @@ h1 {
 h3{
     margin-top: 30px;
     margin-bottom: 20px;
-    color: #f0eee9;
+    color: #b98a11;
 }
 h4{
-    color: rgb(247, 245, 239);
+    color: rgb(4, 108, 134);
     padding-top: 5px;
    
 }
 h5{
     text-align: center;
-    color:rgb(31, 26, 1)
+    color:rgb(4, 155, 24)
 }
 /*================
     SKILLS STYLE
@@ -69,7 +69,7 @@ h5{
 }
 #projectsGrid{
     background: none;
-    color: black;
+    color: rgb(243, 235, 235);
     transition : transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -123,9 +123,10 @@ input,textarea{
  }
 
 button{
-    background-color: #2008f3;
+    background-color: green;
     color: white;
     border: none;
+    display:inline-block;
     padding: 12px;
     height:50px;
     width:150px;
@@ -149,31 +150,51 @@ button{
     font-weight: bold;
     transition: backgrond 0.3s ease;
 }
+
+#savedEntries div button{
+    cursor:pointer;
+    display:flex;
+    justify-content: space-between;
+    margin: 8px;
+}
+
+#clearAllBtn{
+    font-size: 15px;
+    background-color:blue;
+
+}
+
 /*==============
     HOVER EFFECT 
    ================*/
  
 .contact-form button:hover{
+    background-color: #17461d;
+}
+
+#clearAllBtn:hover{
     background-color: #043563;
 }
 
 #clearDataBtn:hover{
     background-color: rgb(141, 19, 19);
 }
-#projectsGrid:hover{
+#projectsGrid :hover{
+    background-color: #111111;
     transform: translate(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0,0, 0.15);
+    box-shadow: 0 10px 20px rgba(46, 45, 45, 0.15);
 }
 
-.skills-container:hover{
+.skills-container :hover{
     transform: translate(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0,0, 0.15);
-    color: black;
+    box-shadow: 0 10px 20px rgba(46, 45,45, 0.15);
+    background-color: #111111;
 }
 
 .contact-form:hover{
     transform: translate(-5px);
     box-shadow: 0 10px 20px rgba(0, 0,0, 0.15);
+    background-color: rgb(26, 25, 25);
 }
 
 .navbar a:hover{

@@ -9,9 +9,11 @@ Contact Form Logic
 
 document.addEventListener("DOMContentLoaded", () => {
 
+const entriesContainer = document.getElementById("savedEntries");
 const form = document.querySelector(".contact-form");
 const messageBox = document.querySelector(".form-message");
 const savedMsg = document.getElementById("savedMsg");
+const clearAllBtn = document.getElementById("clearAllBtn");
 
 const inputs = {
 name:document.querySelector("#name"),
@@ -116,6 +118,35 @@ function renderProjects(projects) {
 
 renderProjects(projects);
 
+ //===========RENDERING ENTRIES============
+
+    function renderEntries() {
+    
+    const data = JSON.parse(localStorage.getItem("contactData")) || [];
+    if (data.length === 0) {
+      entriesContainer.textContent = "No saved entries";
+      return;
+    }
+    entriesContainer.innerHTML="";
+
+    if(data.length===0) {
+      entriesContainer.textContent ="No messages submitted yet.";
+      return;
+    }
+
+    data.forEach((entry, index) => {
+      const div = document.createElement("div");
+
+      div.innerHTML = `<span>${index + 1},${entry.name }</span>;
+      <button class="delete-btn" data-index="${index}">Delete</button>`;
+
+      entriesContainer.appendChild(div);
+      console.log("Entries:", entry);
+
+    });
+   
+  }
+
 //=======SAVE ENTRIES IN LOCALSTORAGE======
 
 form.addEventListener('submit',function (e) {
@@ -138,32 +169,36 @@ form.addEventListener('submit',function (e) {
   
   console.log("saving:" , JSON.stringify(formData));
   
+  renderEntries();
   form.reset();
 
-  //===========RENDERING ENTRIES============
+ });
 
-  const entriesContainer = document.getElementById("savedEntries");
+  //============HANDLE DELETE CLICKS======== 
 
-  function renderEntries() {
-    entriesContainer.innerHTML = "";
+  entriesContainer.addEventListener("click", function (e) {
+    console.log("Clicked", e.target);
 
-    const data = JSON.parse(localStorage.getItem("contactData")) ||[];
-    if (data.length === 0) {
-      entriesContainer.textContent = "No saved entries";
-      return;
-    }
+    const btn = e.target.closest(".delete-btn");
+    if(!btn) return;
+   
+      console.log("Delete  button clicked");
 
-    data.forEach((entry, index) => {
-      const div = document.createElement("div");
-      div.textContent = `${index + 1},${entry.name}`;
-      entriesContainer.appendChild(div);
+      const index = Number(btn.dataset.index);
+      console.log("Index", index);
 
-    });
-  }
-  renderEntries();
+      const data = JSON.parse(localStorage.getItem("contactData")) || [];
+      if (!confirm("Delete all messages?"))
+        return;
 
+      data.splice(index, 1);
+      localStorage.setItem("contactData", JSON.stringify(data));
+      
+       renderEntries();
+     
 });
- //==========CLEAR DATA BUTTON=======
+
+ //========== HANDLE CLEAR DATA BUTTON CLICKS=======
 
  const clearBtn = document.getElementById("clearDataBtn");
 
@@ -175,4 +210,18 @@ form.addEventListener('submit',function (e) {
 
   form.reset();
  })
+
+ //========CLEAR ALL MESSAGES BUTTON HANDLER==========
+
+ clearAllBtn .addEventListener("click", () => {
+  if (!confirm("Delete all messages?"))
+    return;
+  localStorage.removeItem("contactData");
+
+  renderEntries();
+ });
+ 
+
+
 });
+
