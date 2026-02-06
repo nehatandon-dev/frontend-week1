@@ -27,7 +27,7 @@ function showMessage(text,color) {
    messageBox.style.color = color;
   
 } 
-//=======FORM SUBMISSION=========
+//=======FORM SUBMISSION HANDLER SHOWING MESSAGE ON SUBMISSION=========
 
 function handleFormSubmit(event) {
   event.preventDefault();
@@ -117,12 +117,20 @@ function renderProjects(projects) {
 }
 
 renderProjects(projects);
+//=======
+function getStoredData() {
+  return JSON.parse(localStorage.getItem("contactData")) || [];
+}
+
+function setStoredData(data){
+  localStorage.setItem("contactData", JSON.stringify(data));
+}
 
  //===========RENDERING ENTRIES============
 
     function renderEntries() {
     
-    const data = JSON.parse(localStorage.getItem("contactData")) || [];
+    const data = getStoredData();
     if (data.length === 0) {
       entriesContainer.textContent = "No saved entries";
       return;
@@ -141,13 +149,12 @@ renderProjects(projects);
       <button class="delete-btn" data-index="${index}">Delete</button>`;
 
       entriesContainer.appendChild(div);
-      console.log("Entries:", entry);
-
+      
     });
    
   }
 
-//=======SAVE ENTRIES IN LOCALSTORAGE======
+//=======SAVE  FORM ENTRIES DATA TO LOCALSTORAGE AND UPDATE UI======
 
 form.addEventListener('submit',function (e) {
   e.preventDefault();
@@ -157,61 +164,49 @@ form.addEventListener('submit',function (e) {
     email:inputs.email.value.trim(),
     message:inputs.message.value.trim()
   }; 
+  const data = getStoredData();
+  data.push(formData);
+  setStoredData(data);
 
-  let storedData = JSON.parse(localStorage.getItem("contactData")) || [];
-
-  if (!Array.isArray(storedData)) {
-    storedData = [];
-  }
-  
-  storedData.push(formData);
-  localStorage.setItem("contactData" , JSON.stringify(storedData));
-  
-  console.log("saving:" , JSON.stringify(formData));
-  
   renderEntries();
   form.reset();
 
  });
 
-  //============HANDLE DELETE CLICKS======== 
+  //============REMOVE A SINGLE ENTRY BY INDEX======== 
 
   entriesContainer.addEventListener("click", function (e) {
-    console.log("Clicked", e.target);
-
     const btn = e.target.closest(".delete-btn");
     if(!btn) return;
-   
-      console.log("Delete  button clicked");
-
-      const index = Number(btn.dataset.index);
-      console.log("Index", index);
-
-      const data = JSON.parse(localStorage.getItem("contactData")) || [];
+      
       if (!confirm("Delete all messages?"))
         return;
 
+      const index = Number(btn.dataset.index);
+      const data = getStoredData();
+
       data.splice(index, 1);
-      localStorage.setItem("contactData", JSON.stringify(data));
-      
+      setStoredData(data);
        renderEntries();
      
 });
 
- //========== HANDLE CLEAR DATA BUTTON CLICKS=======
+ //========== REMOVE ALL ENTRIES FROM LOCALSTORAGE USING CONFIRMATION MESSAGE=======
 
- const clearBtn = document.getElementById("clearDataBtn");
+ /*const clearBtn = document.getElementById("clearDataBtn");
 
  clearBtn.addEventListener("click",() =>{
+  if (!confirm("Delete all messages?"))
+    return;
   localStorage.removeItem("contactData");
 
   savedMsg.textContent = "Saved data cleared";
   savedMsg.style.color = "red";
 
   form.reset();
- })
+ })*/
 
- //========CLEAR ALL MESSAGES BUTTON HANDLER==========
+ //========REMOVE ALL ENTRIES IN SINGLE CLICK USING CONFIRMATION MESSAGE==========
 
  clearAllBtn .addEventListener("click", () => {
   if (!confirm("Delete all messages?"))
@@ -221,7 +216,5 @@ form.addEventListener('submit',function (e) {
   renderEntries();
  });
  
-
-
 });
 
