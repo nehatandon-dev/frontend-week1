@@ -43,9 +43,10 @@ In week 3,I implemented JavaScript functionality for the contact form;
 
 ## Portfolio Website
 A responsive personal portfolio built using HTML,CSS,and JavaScript with dynamic rendering and localstorage based form handling.
+This project was developed progressively to strengthen core JavaScript concepts, DOM manipulation, and localStorage-based CRUD operations.
 
 # Features
-.Skills & projects rendered using JvaScript arrays
+.Skills & projects rendered using JavaScript arrays
 .Contact form with validation
 .Data stored in localStorage
 .Render saved messages dynamically
