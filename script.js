@@ -29,7 +29,7 @@ function showMessage(text,color) {
 } 
 //=======FORM SUBMISSION HANDLER SHOWING MESSAGE ON SUBMISSION=========
 
-function handleFormSubmit(event) {
+/*function handleFormSubmit(event) {
   event.preventDefault();
 
   for(let key in inputs){
@@ -40,18 +40,25 @@ function handleFormSubmit(event) {
         showMessage("All fields are required","red");
          return;
       }
-
+      const submitBtn = form.querySelector("button");
+      submitBtn.disabled =true; 
+      const emailPattern = /^[^\s@]+\.[^\s@]+$/;
+      if(!emailPattern.test(inputs.email.value)) {
+        alert("please enter a valid email address.");
+        
+        setTimeout(() => {
+          submitBtn.disabled = false;
+        }, 1000);
+      }
     }
    
-  showMessage(
-    `Thank you, ${inputs.name.value}! We received your message.`,"green"
-  );
+  
 
 };
 
-form.addEventListener("submit",handleFormSubmit);
+form.addEventListener("submit",handleFormSubmit);*/
 
-//======== TECHNICAL SKILLS LIST========
+//======== RENDER TECHNICAL SKILLS LIST ITEMS========
 
 const skills = ["HTML","CSS3","JavaScript(ES6+)"];
 const tools = ["Git","REST API","JSON","LocalStorage"];
@@ -158,7 +165,24 @@ function setStoredData(data){
 
 form.addEventListener('submit',function (e) {
   e.preventDefault();
+
+  if(
+    !inputs.name.value.trim() ||
+    !inputs.email.value.trim() ||
+    !inputs.message.value.trim()
+  )
+  {
+  showMessage("All fields are required!" ,"red");
+  return;
+}
     
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if(!emailPattern.test(inputs.email.value)) {
+        alert("Please enter a valid email address!");
+        return;
+      }
+
   const formData = {
     name:inputs.name.value.trim(),
     email:inputs.email.value.trim(),
@@ -167,6 +191,16 @@ form.addEventListener('submit',function (e) {
   const data = getStoredData();
   data.push(formData);
   setStoredData(data);
+
+  const submitBtn =form.querySelector("button");
+  submitBtn.disabled = true;
+
+  setTimeout(() => {
+    submitBtn.disabled = false;
+  },1000);
+  showMessage(
+    `Thank you, ${inputs.name.value}! We received your message.`,"green"
+  );
 
   renderEntries();
   form.reset();
