@@ -40,3 +40,33 @@ In week 3,I implemented JavaScript functionality for the contact form;
 -Display saved data on page load
 -Added functionality to clear stored data
 -Improved UX with conditional message
+
+## Portfolio Website
+A responsive personal portfolio built using HTML,CSS,and JavaScript with dynamic rendering and localstorage based form handling.
+
+# Features
+.Skills & projects rendered using JvaScript arrays
+.Contact form with validation
+.Data stored in localStorage
+.Render saved messages dynamically
+.Delete individual messages
+.Clear all messages funtionality
+
+# Tech Stack
+.HTML5
+.CSS3(Grid & Flexbox)
+.JvaScript(DOM,Events,localStorage)
+
+# Concepts Practiced
+.DOM Manipulation
+.Event handling & delegation
+.Arrays & objects
+.JSON stingify/parse
+.LocalStorage CRUD operations
+
+#Future Improvements
+.Edit functionality
+.Search/filter messages
+.Backend integration
+.Live deployment
+
